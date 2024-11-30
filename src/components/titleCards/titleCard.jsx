@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './titleCard.css';
 
-const TitleCard = () => {
+const TitleCard = ({title,category}) => {
     const cardsRef = useRef();
 
     const handleWheel = (event) => {
@@ -64,7 +64,7 @@ const TitleCard = () => {
 
     return (
         <div className="title-card">
-            <h2>Popular Movies</h2>
+            <h2>{title?title:"Popular Movies"} {category?category:"Movies"} </h2>
             <div className="card-list" ref={cardsRef}>
                 {movies.map((movie) => (
                     <div className="card" key={movie.id}>
