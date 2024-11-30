@@ -1,10 +1,32 @@
-import React, { useEffect, useState } from 'react'; 
-import './titleCard.css'; 
+import React, { useEffect, useRef, useState } from 'react';
+import './titleCard.css';
 
 const TitleCard = () => {
+    const cardsRef = useRef();
+
+    const handleWheel = (event) => {
+        if (cardsRef.current) {
+            event.preventDefault();
+            cardsRef.current.scrollLeft += event.deltaY; // Menggulung secara horizontal
+        }
+    };
+
+    useEffect(() => {
+        const currentRef = cardsRef.current;
+        if (currentRef) {
+            currentRef.addEventListener('wheel', handleWheel, { passive: false });
+        }
+        // Cleanup event listener
+        return () => {
+            if (currentRef) {
+                currentRef.removeEventListener('wheel', handleWheel);
+            }
+        };
+    }, []);
+
     const [movies, setMovies] = useState([]); // State for movie data
     const [loading, setLoading] = useState(true); // State for loading
-    const [error, setError] = useState(null); // State for error handling 
+    const [error, setError] = useState(null); // State for error handling
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -17,16 +39,16 @@ const TitleCard = () => {
                     throw new Error("Failed to fetch movies");
                 }
                 const data = await response.json();
-                setMovies(data.results); 
+                setMovies(data.results);
             } catch (err) {
-                setError(err.message); 
+                setError(err.message);
             } finally {
-                setLoading(false); 
+                setLoading(false);
             }
         };
 
-        fetchMovies(); 
-    }, []); 
+        fetchMovies();
+    }, []);
 
     if (loading) {
         return <div className="text-center">Loading...</div>;
@@ -42,16 +64,15 @@ const TitleCard = () => {
 
     return (
         <div className="title-card">
-            <h2>Popular Movies</h2> 
-            <div className="card-list">
-                {movies.map((movie, index) => (
-                    <div className="card" key={index}>
-                        <img 
-                            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
-                            alt={movie.title} 
-                           
+            <h2>Popular Movies</h2>
+            <div className="card-list" ref={cardsRef}>
+                {movies.map((movie) => (
+                    <div className="card" key={movie.id}>
+                        <img
+                            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                            alt={movie.title}
                         />
-                       <p>{movie.title}</p>
+                        <p>{movie.title}</p>
                     </div>
                 ))}
             </div>
