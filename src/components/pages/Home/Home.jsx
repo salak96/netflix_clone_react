@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.css';
 import Navbar from '../../Navbar/navbarNetflix';
-import heroBanner from '../../../assets/hero_judul.jpg';
+import heroBanner from '../../../assets/poster.jpg';
 import heroTitle from '../../../assets/hero_title.png';
 import playIcon from '../../../assets/Play_icon.png';
 import infoIcon from '../../../assets/info_icon.png';
