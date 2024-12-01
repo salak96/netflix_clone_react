@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './titleCard.css';
 
-const TitleCard = ({title,category}) => {
+const TitleCard = ({ title, category }) => {
     const cardsRef = useRef();
 
     const handleWheel = (event) => {
@@ -31,12 +31,12 @@ const TitleCard = ({title,category}) => {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const apiKey = "8f38a77b78899a5500c2f94daea756a1";
+                const apiKey = '8f38a77b78899a5500c2f94daea756a1';
                 const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
 
                 const response = await fetch(url);
                 if (!response.ok) {
-                    throw new Error("Failed to fetch movies");
+                    throw new Error('Failed to fetch movies');
                 }
                 const data = await response.json();
                 setMovies(data.results);
@@ -51,27 +51,26 @@ const TitleCard = ({title,category}) => {
     }, []);
 
     if (loading) {
-        return <div className="text-center">Loading...</div>;
+        return <div className='text-center'>Loading...</div>;
     }
 
     if (error) {
         return (
-            <div className="text-center text-red-500">
+            <div className='text-center text-red-500'>
                 <p>Error: {error}</p>
             </div>
         );
     }
 
     return (
-        <div className="title-card">
-            <h2>{title?title:"Popular Movies"} {category?category:"Movies"} </h2>
-            <div className="card-list" ref={cardsRef}>
+        <div className='title-card'>
+            <h2>
+                {title ? title : 'Popular Movies'} {category ? category : 'Movies'}{' '}
+            </h2>
+            <div className='card-list' ref={cardsRef}>
                 {movies.map((movie) => (
-                    <div className="card" key={movie.id}>
-                        <img
-                            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                            alt={movie.title}
-                        />
+                    <div className='card' key={movie.id}>
+                        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
                         <p>{movie.title}</p>
                     </div>
                 ))}

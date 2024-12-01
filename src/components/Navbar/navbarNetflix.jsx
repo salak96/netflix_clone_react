@@ -17,9 +17,9 @@ const Navbar = () => {
     };
 
     return (
-        <div className="navbar">
-            <div className="navbar-left">
-                <img src={logo} alt="Netflix" className="navbar-logo" />
+        <div className='navbar'>
+            <div className='navbar-left'>
+                <img src={logo} alt='Netflix' className='navbar-logo' />
                 <ul>
                     <li>Home</li>
                     <li>TV Shows</li>
@@ -29,18 +29,14 @@ const Navbar = () => {
                     <li>Browse by Language</li>
                 </ul>
             </div>
-            <div className="navbar-right">
-                <img src={search_icon} alt="Search" className="icon" />
-                {userLogin ? (
-                    <p className="username">Hello, {userLogin.name}</p>
-                ) : (
-                    <p className="username">Guest</p>
-                )}
-                <img src={bell_icon} alt="Notifications" className="icon bell" />
-                <div className="navbar-profile">
-                    <img src={profile_img} alt="Profile" className="profile" />
-                    <img src={caret_icon} alt="Caret" className="caret_icon" />
-                    <div className="dropdown">
+            <div className='navbar-right'>
+                <img src={search_icon} alt='Search' className='icon' />
+                {userLogin ? <p className='username'>Hello, {userLogin.name}</p> : <p className='username'>Guest</p>}
+                <img src={bell_icon} alt='Notifications' className='icon bell' />
+                <div className='navbar-profile'>
+                    <img src={profile_img} alt='Profile' className='profile' />
+                    <img src={caret_icon} alt='Caret' className='caret_icon' />
+                    <div className='dropdown'>
                         <p onClick={handleSignOut}>Sign Out</p>
                     </div>
                 </div>

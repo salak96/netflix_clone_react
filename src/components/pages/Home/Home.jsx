@@ -18,25 +18,27 @@ const Home = () => {
                     <div className='hero-caption'>
                         <img src={heroTitle} alt='title' className='caption-img' />
                         <p>
-                            "Ipar Adalah Maut" berhasil menarik perhatian lebih dari 3 juta penonton hanya dalam waktu 14 hari sejak penayangan perdananya pada 13 Juni 2024 lalu. Melalui akun Instagram resmi, @iparadalahmautmovie, mereka mengumumkan capaian terbaru ini dengan jumlah penonton mencapai 3.051.789 orang.
+                            "Ipar Adalah Maut" berhasil menarik perhatian lebih dari 3 juta penonton hanya dalam waktu 14 hari sejak penayangan
+                            perdananya pada 13 Juni 2024 lalu. Melalui akun Instagram resmi, @iparadalahmautmovie, mereka mengumumkan capaian terbaru
+                            ini dengan jumlah penonton mencapai 3.051.789 orang.
                         </p>
-                        <div className="hero-btns">
+                        <div className='hero-btns'>
                             <button className='btn'>
-                            <img src={playIcon} alt="Play Icon" />
+                                <img src={playIcon} alt='Play Icon' />
                                 Play
                             </button>
                             <button className='btn dark-btn'>
-                                <img src={infoIcon} alt="info" />
+                                <img src={infoIcon} alt='info' />
                                 More Info
                             </button>
                         </div>
                     </div>
                 </div>
-                <div className="more-cards">
-                    <TitleCard title={"Only on Netflix"} category={"Movies"} />
-                    <TitleCard title={"Upcoming"} category={"TV Shows"} />
-                    <TitleCard title={"Favorite"} category={"Web Series"} />
-                    <TitleCard title={"Top Picks for You"} category={"Web Series"} />
+                <div className='more-cards'>
+                    <TitleCard title={'Only on Netflix'} category={'Movies'} />
+                    <TitleCard title={'Upcoming'} category={'TV Shows'} />
+                    <TitleCard title={'Favorite'} category={'Web Series'} />
+                    <TitleCard title={'Top Picks for You'} category={'Web Series'} />
                 </div>
                 <Footer />
             </div>
