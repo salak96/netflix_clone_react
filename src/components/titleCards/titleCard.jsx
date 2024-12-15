@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './titleCard.css';
 
-const TitleCard = ({ title, category }) => {
+const TitleCard = ({ title, category,endpoint }) => {
     const cardsRef = useRef();
 
     const handleWheel = (event) => {
@@ -32,7 +32,7 @@ const TitleCard = ({ title, category }) => {
         const fetchMovies = async () => {
             try {
                 const apiKey = '8f38a77b78899a5500c2f94daea756a1';
-                const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
+                const url = `https://api.themoviedb.org/3/movie/${endpoint}?api_key=${apiKey}&language=en-US&page=1`;
 
                 const response = await fetch(url);
                 if (!response.ok) {
